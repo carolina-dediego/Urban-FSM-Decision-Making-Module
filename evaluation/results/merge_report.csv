@@ -1,0 +1,45 @@
+new_id,file,route_id,status,score_route,score_penalty,score_composed,num_infractions,success_strict,duration_game,duration_system
+0,results_00.json,RouteScenario_0_rep0,Perfect,100,1.0,100.0,0,True,18.1,89.361
+1,results_01.json,RouteScenario_1_rep0,Perfect,100,1.0,100.0,0,True,17.3,84.202
+2,results_02.json,RouteScenario_2_rep0,Perfect,100,1.0,100.0,0,True,23.2,163.251
+3,results_03.json,RouteScenario_3_rep0,Failed - Agent timed out,39.42,0.262513,10.34825,5,False,362.55,2175.986
+4,results_04.json,RouteScenario_4_rep0,Perfect,100,1.0,100.0,0,True,38.35,187.519
+5,results_05.json,RouteScenario_5_rep0,Completed,100,0.6,60.0,1,False,17.8,92.216
+6,results_06.json,RouteScenario_6_rep0,Failed - Agent crashed,91.87,0.42,38.5854,2,False,15.3,85.23
+7,results_07.json,RouteScenario_7_rep0,Perfect,100,1.0,100.0,0,True,13.35,69.163
+8,results_08.json,RouteScenario_8_rep0,Completed,100,0.6,60.0,1,False,21.05,156.819
+9,results_09.json,RouteScenario_9_rep0,Completed,100,0.6,60.0,1,False,14.45,112.233
+10,results_10.json,RouteScenario_10_rep0,Completed,100,0.6,60.0,1,False,15.8,118.073
+11,results_11.json,RouteScenario_11_rep0,Completed,100,0.7,70.0,1,False,14.5,118.465
+12,results_12.json,RouteScenario_12_rep0,Perfect,100,1.0,100.0,0,True,20.5,146.718
+13,results_13.json,RouteScenario_13_rep0,Completed,100,0.6,60.0,1,False,56.25,397.112
+14,results_14.json,RouteScenario_14_rep0,Completed,100,0.304073,30.40727,3,False,36.15,254.172
+15,results_15.json,RouteScenario_15_rep0,Failed - Agent deviated from the route,1.55,0.527861,0.818184,2,False,6.25,66.328
+16,results_16.json,RouteScenario_16_rep0,Perfect,100,1.0,100.0,0,True,18.7,134.838
+17,results_17.json,RouteScenario_17_rep0,Completed,100,0.7,70.0,1,False,10.5,92.881
+18,results_18.json,RouteScenario_18_rep0,Failed - Agent got blocked,14.34,1.0,14.34,1,False,183.2,1081.111
+19,results_19.json,RouteScenario_19_rep0,Failed - Agent crashed,35.35,1.0,35.35,0,False,57.75,1603.105
+20,results_20.json,RouteScenario_20_rep0,Perfect,100,1.0,100.0,0,True,17.1,128.42
+21,results_21.json,RouteScenario_21_rep0,Perfect,100,1.0,100.0,0,True,16.4,85.169
+22,results_22.json,RouteScenario_22_rep0,Completed,100,0.216,21.6,3,False,120.75,736.561
+23,results_23.json,RouteScenario_23_rep0,Perfect,100,1.0,100.0,0,True,16.55,87.244
+24,results_24.json,RouteScenario_24_rep0,Perfect,100,1.0,100.0,0,True,14.2,112.298
+25,results_25.json,RouteScenario_25_rep0,Completed,100,0.6,60.0,1,False,20.7,159.491
+26,results_26.json,RouteScenario_26_rep0,Completed,100,0.871216,87.121609,1,False,36.25,189.479
+27,results_27.json,RouteScenario_27_rep0,Completed,100,0.7,70.0,1,False,10.25,59.13
+28,results_28.json,RouteScenario_28_rep0,Perfect,100,1.0,100.0,0,True,46.85,225.732
+29,results_29.json,RouteScenario_29_rep0,Failed - Agent deviated from the route,2.07,1.0,2.07,1,False,6.1,58.716
+30,results_30.json,RouteScenario_30_rep0,Perfect,100,1.0,100.0,0,True,10.7,59.384
+31,results_31.json,RouteScenario_31_rep0,Perfect,100,1.0,100.0,0,True,10.7,57.224
+32,results_32.json,RouteScenario_32_rep0,Completed,100,0.569069,56.906865,2,False,18.85,148.237
+33,results_33.json,RouteScenario_33_rep0,Completed,100,0.8,80.0,1,False,20.4,110.262
+34,results_34.json,RouteScenario_34_rep0,Completed,100,0.7,70.0,1,False,9.85,51.169
+35,results_35.json,RouteScenario_35_rep0,Perfect,100,1.0,100.0,0,True,16.4,122.16
+36,results_36.json,RouteScenario_36_rep0,Perfect,100,1.0,100.0,0,True,16.6,127.795
+37,results_37.json,RouteScenario_37_rep0,Perfect,100,1.0,100.0,0,True,24.0,167.968
+38,results_38.json,RouteScenario_38_rep0,Completed,100,0.36,36.0,2,False,22.05,156.639
+39,results_39.json,RouteScenario_39_rep0,Completed,100,0.6,60.0,1,False,30.5,209.379
+40,results_40.json,RouteScenario_40_rep0,Failed - Agent got blocked,70.74,1.0,70.74,1,False,191.5,1166.204
+41,results_41.json,RouteScenario_41_rep0,Perfect,100,1.0,100.0,0,True,14.25,72.152
+42,results_42.json,RouteScenario_42_rep0,Completed,100,0.8,80.0,1,False,20.7,111.228
+43,results_43.json,RouteScenario_43_rep0,Perfect,100,1.0,100.0,0,True,29.05,158.393
