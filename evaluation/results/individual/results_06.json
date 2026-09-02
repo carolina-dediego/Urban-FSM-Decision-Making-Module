@@ -1,0 +1,135 @@
+{
+  "_checkpoint": {
+    "global_record": {
+      "index": -1,
+      "route_id": -1,
+      "status": "Failed",
+      "infractions": {
+        "collisions_layout": 0.0,
+        "collisions_pedestrian": 0.0,
+        "collisions_vehicle": 14.758,
+        "red_light": 14.758,
+        "stop_infraction": 0.0,
+        "outside_route_lanes": 0,
+        "min_speed_infractions": 0.0,
+        "yield_emergency_vehicle_infractions": 0.0,
+        "scenario_timeouts": 0.0,
+        "route_dev": 0.0,
+        "vehicle_blocked": 0.0,
+        "route_timeout": 0.0
+      },
+      "scores_mean": {
+        "score_composed": 38.5854,
+        "score_route": 91.87,
+        "score_penalty": 0.42
+      },
+      "scores_std_dev": {
+        "score_composed": 0,
+        "score_route": 0,
+        "score_penalty": 0
+      },
+      "meta": {
+        "total_length": 73.757,
+        "duration_game": 15.3,
+        "duration_system": 85.23,
+        "exceptions": [
+          [
+            "RouteScenario_0_rep0",
+            0,
+            "Failed - Agent crashed"
+          ]
+        ]
+      }
+    },
+    "progress": [
+      1,
+      1
+    ],
+    "records": [
+      {
+        "timestamp": "bench2drive_196_route0_06_25_15_33_11",
+        "index": 0,
+        "route_id": "RouteScenario_0_rep0",
+        "status": "Failed - Agent crashed",
+        "num_infractions": 2,
+        "infractions": {
+          "collisions_layout": [],
+          "collisions_pedestrian": [],
+          "collisions_vehicle": [
+            "Agent collided against object with type=vehicle.chevrolet.impala and id=8753 at (x=23.428, y=-7.73, z=0.0)"
+          ],
+          "red_light": [
+            "Agent ran a red light 8734 at (x=19.15, y=12.0, z=0.0)"
+          ],
+          "stop_infraction": [],
+          "outside_route_lanes": [],
+          "min_speed_infractions": [],
+          "yield_emergency_vehicle_infractions": [],
+          "scenario_timeouts": [],
+          "route_dev": [],
+          "vehicle_blocked": [],
+          "route_timeout": []
+        },
+        "scores": {
+          "score_route": 91.87,
+          "score_penalty": 0.42,
+          "score_composed": 38.5854
+        },
+        "meta": {
+          "route_length": 73.757,
+          "duration_game": 15.3,
+          "duration_system": 85.23
+        }
+      }
+    ]
+  },
+  "entry_status": "Finished",
+  "eligible": true,
+  "sensors": [
+    "carla_opendrive_map",
+    "carla_imu",
+    "carla_gnss",
+    "carla_speedometer",
+    "carla_camera",
+    "carla_camera",
+    "carla_camera",
+    "carla_camera",
+    "carla_lidar",
+    "carla_radar",
+    "carla_radar"
+  ],
+  "values": [
+    "38.5854",
+    "91.87",
+    "0.42",
+    "0.0",
+    "14.758",
+    "0.0",
+    "14.758",
+    "0.0",
+    "0",
+    "0.0",
+    "0.0",
+    "0.0",
+    "0.0",
+    "0.0",
+    "0.0"
+  ],
+  "labels": [
+    "Avg. driving score",
+    "Avg. route completion",
+    "Avg. infraction penalty",
+    "Collisions with pedestrians",
+    "Collisions with vehicles",
+    "Collisions with layout",
+    "Red lights infractions",
+    "Stop sign infractions",
+    "Off-road infractions",
+    "Route deviations",
+    "Route timeouts",
+    "Agent blocked",
+    "Yield emergency vehicles infractions",
+    "Scenario timeouts",
+    "Min speed infractions"
+  ]
+}
