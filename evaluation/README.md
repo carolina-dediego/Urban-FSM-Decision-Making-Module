@@ -1,3 +1,3 @@
-# Evaluation
+# Evaluación
 
-Results and scripts used for the reduced evaluation protocol based on Bench2Drive.
+Esta carpeta contiene las rutas, los scripts de procesamiento y los resultados empleados en el protocolo de evaluación reducido y adaptado basado en Bench2Drive.
