@@ -1,0 +1,7 @@
+ability,num_routes_counted,mean_driving_score,mean_route_completion,mean_infraction_penalty,success_rate_percent,total_collisions_vehicle,total_collisions_pedestrian,total_collisions_layout,total_red_light,total_stop_infraction,total_scenario_timeouts
+Merging,16,65.1906530625,91.51,0.704808125,25.0,10,0,0,1,1,0
+Overtaking,9,70.44647222222223,82.38777777777777,0.8309458888888889,66.66666666666667,4,0,1,0,0,1
+Emergency_Brake,12,85.62740658333334,100.0,0.8562740833333333,58.333333333333336,2,0,0,2,1,0
+Give_Way,2,85.0,100.0,0.85,50.0,0,0,0,0,0,0
+Traffic_Signs,19,65.55734394736842,91.66105263157895,0.7364811578947368,21.05263157894737,8,0,0,5,2,0
+Mean_over_abilities,,74.3643751630848,93.11176608187135,0.7957018510233917,44.21052631578947,,,,,,
