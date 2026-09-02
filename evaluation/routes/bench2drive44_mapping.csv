@@ -4,7 +4,7 @@ new_id,ruta_original,original_index,original_id_xml,town,scenario_type,tipo_que_
 2,bench2drive_03,3,1792,Town12,HazardAtSideLane,peligro lateral con bicicleta/actor en el carril adyacente,Overtaking,45.0,44.0,,,,6.0,101.0,,134.1,68
 3,bench2drive_04,4,1825,Town12,ConstructionObstacleTwoWays,"obras en vía de doble sentido, con posible invasión del carril contrario",Overtaking,43.0,,,,70-149,,,,134.0,68
 4,bench2drive_174,174,25857,Town05,AccidentTwoWays,accidente bloqueando carril en vía de doble sentido,Overtaking,44.0,,,,62-109,,,,131.4,68
-5,bench2drive_191,191,26435,Town03,ParkingExit,salida de aparcamiento e incorporación al flujo,Merging,,,,,,,,,132.4,68,únicas diferencias relevantes son localización
+5,bench2drive_191,191,26435,Town03,ParkingExit,salida de aparcamiento e incorporación al flujo,Merging,,,,,,,,,132.4,68
 6,bench2drive_196,196,26956,Town05,SignalizedJunctionRightTurn,giro a la derecha en intersección regulada con flujo de actores,Merging; Traffic_Signs,,,12.0,22-38,,,,,70.1,27
 7,bench2drive_195,195,26950,Town03,OppositeVehicleRunningRedLight,vehículo opuesto que se salta el semáforo en rojo,Emergency_Brake; Traffic_Signs,,,,,,,,,73.5,27
 8,bench2drive_11,11,2086,Town12,NonSignalizedJunctionLeftTurn,giro a la izquierda en intersección no semaforizada con flujo de actores,Merging; Traffic_Signs,,,8.0,24-25,,,,,74.0,28
