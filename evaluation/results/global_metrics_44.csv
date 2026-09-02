@@ -1,0 +1,2 @@
+eval_num,mean_driving_score,mean_route_completion,mean_infraction_penalty,success_rate_percent,perfect_routes,completed_routes,failed_routes,total_collisions_layout,total_collisions_pedestrian,total_collisions_vehicle,total_min_speed_infractions,total_outside_route_lanes,total_red_light,total_route_dev,total_route_timeout,total_scenario_timeouts,total_stop_infraction,total_vehicle_blocked,total_yield_emergency_vehicle_infractions
+44,71.91562677272728,89.8940909090909,0.7984257272727273,43.18181818181818,19,18,7,1,0,16,0,5,5,2,1,1,2,2,1
