@@ -1,23 +1,3 @@
-#!/usr/bin/env python3
-"""
-Compute global, per-route and ability metrics for the selected Bench2Drive-44 subset
-from the real CARLA/Bench2Drive results.json structure.
-
-Expected result JSON structure:
-  {
-    "_checkpoint": {
-      "global_record": {...},
-      "progress": [...],
-      "records": [ ... per-route records ... ]
-    },
-    "labels": [...],
-    "values": [...]
-  }
-
-Usage:
-  python b2d44_metrics_from_results_json.py --json results.json --mapping bench2drive44_easiest_mapping.csv --out results_44_metrics
-"""
-
 import argparse
 import csv
 import json
