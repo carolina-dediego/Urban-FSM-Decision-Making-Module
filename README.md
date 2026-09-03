@@ -9,6 +9,4 @@ Finite-state decision-making module for modular autonomous navigation in urban s
 
 ## Citation
 
-## Paper Status
-
 ## License
