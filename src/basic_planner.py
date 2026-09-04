@@ -24,10 +24,10 @@ class BasicPlannerConfig:   # Agrupación de parámetros
         # follow
         self.time_gap_follow = 1.5 # tiempo de separación follow en segundos (dist=min+Tgap*v)
         self.min_distance_follow = 1.2 #minimo de m en follow
-        self.follow_start_m = 50.0
+        self.follow_start_m = 40.0
         self.follow_accel_limit_mps2 = 2.2 #follow más fuerte en aceleración
 
-        self.coasting_start_m = 60.0
+        self.coasting_start_m = 45.0
         #stop
         self.stop_distance_m = 4.0  #distancia de stop más grande por si necesita revasar por estar bloqueado
         self.traffic_light_stop_m = 12.0 
