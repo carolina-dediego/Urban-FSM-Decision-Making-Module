@@ -1,12 +1,1 @@
-# Urban-FSM-Decision-Making-Module
-Finite-state decision-making module for modular autonomous navigation in urban scenarios.
-
-## Overview
-
-## Repository Structure
-
-## Benchmark
-
-## Citation
-
-## License
+Módulo de toma de decisiones para navegación autónoma en entornos urbanos
