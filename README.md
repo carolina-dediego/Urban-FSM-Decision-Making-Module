@@ -1,4 +1,4 @@
-# Módulo de toma de decisiones para navegación autónoma en entornos urbanos
+# Módulo de toma de decisiones para navegación autónoma en entornos urbanos 
 
 Módulo de toma de decisiones basado en máquinas de estados finitos para navegación autónoma urbana en el simulador CARLA.
 
