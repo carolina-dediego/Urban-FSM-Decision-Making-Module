@@ -184,7 +184,7 @@ class LaneChangeManager:
         if global_route is None: return None, None
         if obs is None: obs = {}
 
-        # 1. Normalización de comandos
+        # Normalización de comandos
         lane_change_command = str(lane_option).strip().lower()
         if lane_change_command in ["none", "0", "false", "keep"]: lane_change_command = "keep"
         elif lane_change_command in ["left", "-1"]: lane_change_command = "left"
