@@ -7,30 +7,23 @@ class LaneChangeManager:
         self.route_mode = "GLOBAL"
         self.overtake_counter = 0
         self.last_overtake_side = "left"
-        self.return_settle_frames = 85
         self.last_closest_idx_orig = 0
         self.cooldown_frames = 0
 
         # memoria de la maniobra
         self.overtake_start_s = None
-        #self.overtake_start_idx = 0
         self.target_obstacle_kind = None
         self.target_obstacle_start_distance = None
 
         # confirmación de retorno
         self.return_clear_counter = 0
-        self.return_clear_need_frames = 10  #cambiar si vuelve pronto
+        
+        self.return_clear_need_frames = 10
 
-        # respaldo si no puedo confirmar bien el objetivo
-        self.min_progress_for_fallback_return_m = 18.0
-        self.min_overtake_frames_before_return = 50
-        self.max_overtake_frames_force_return = 300
-
-        self.persistence_counter = 0 
         # Memoria específica para evitar volver por glitches o huecos pequeños
         # entre coches de una hilera.
         self.return_lane_blocked_memory = 0
-        self.return_lane_blocked_memory_frames = 18 ##si vuelve demasiado pronto cambiar a 25. Si tarda demasiado en volver, bajarlo a 12
+        self.return_lane_blocked_memory_frames = 18
         self.return_front_clear_m = 30.0
 
         # Evita volver antes de superar completamente bicicletas/peatones lentos.
@@ -64,12 +57,11 @@ class LaneChangeManager:
         
         return local_best_idx
     
-    def _get_xy(self, wp): ### Revisar en qué formato vienen los waypoints para no usar todos ellos. Prueba, borrar lo comentado si funciona
+    def _get_xy(self, wp):
         if isinstance(wp, dict): return float(wp.get('x', 0.0)), float(wp.get('y', 0.0))
         if hasattr(wp, 'transform'): return float(wp.transform.location.x), float(wp.transform.location.y)
         if hasattr(wp, 'location'): return float(wp.location.x), float(wp.location.y)
         return float(getattr(wp, 'x', 0.0)), float(getattr(wp, 'y', 0.0))
-        #return float(wp.x), float(wp.y) ###borrar si descomento lo demás
     
     def _compute_cumulative_distance(self, coords):
         '''Calcula cuánta distancia lleva recorrida desde el inicio de la ruta'''
@@ -143,7 +135,7 @@ class LaneChangeManager:
         cumulative_distance = self._compute_cumulative_distance(coords)
 
         # Empezamos el giro suave 3 metros por delante del morro del coche
-        s_start = cumulative_distance[idx_ego] + start_offset #3.0 puesto a 1.0 el coche empieza a girar 1.0 m por delante del punto actual del coche
+        s_start = cumulative_distance[idx_ego] + start_offset
         s_end = s_start + length_m
         prev_yaw_rad = 0.0
 
@@ -179,7 +171,7 @@ class LaneChangeManager:
             x_new = x_current + offset_lateral * nx
             y_new = y_current + offset_lateral * ny
             
-            if isinstance(wp, dict): wp['x'] = x_new; wp['y'] = y_new   ### revisar cuál es la opción buena y dejar solo esa
+            if isinstance(wp, dict): wp['x'] = x_new; wp['y'] = y_new
             elif hasattr(wp, 'transform'): wp.transform.location.x = x_new; wp.transform.location.y = y_new
             elif hasattr(wp, 'location'): wp.location.x = x_new; wp.location.y = y_new
             else:
@@ -257,5 +249,6 @@ class LaneChangeManager:
             if abs(route_offset_distance) < 0.5:
                 self.route_mode = "GLOBAL"
                 self.cooldown_frames = 60
+                self.return_clear_counter = 0
         
         return output_route, self.route_mode
