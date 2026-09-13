@@ -40,13 +40,6 @@ evaluation/
 * `bench2drive44_selected.xml`: contiene las 44 rutas ejecutables, renumeradas del 0 al 43.
 * `bench2drive44_mapping.csv`: relaciona cada identificador interno con la ruta original de Bench2Drive, el mapa, el tipo de escenario y las capacidades evaluadas.
 
-La selección definitiva incluye las siguientes sustituciones respecto a una versión preliminar:
-
-* ID 22: `bench2drive_37`.
-* ID 23: `bench2drive_185`.
-* ID 36: `bench2drive_122`.
-* ID 39: `bench2drive_135`.
-
 ### Resultados
 
 * `individual/`: contiene la salida original de cada una de las 44 ejecuciones.
@@ -71,9 +64,6 @@ Una ruta puede estar asociada a varias capacidades. Por ello, los subconjuntos u
 | Rutas completadas con penalización |      18 |
 | Rutas fallidas                     |       7 |
 
-Para calcular la tasa de éxito, una ruta debe finalizar y no registrar infracciones relevantes. Las infracciones de velocidad mínima no se consideran bloqueantes para este indicador.
-
-El campo `success_strict` de `merge_report.csv` emplea un criterio de comprobación más restrictivo: estado `Perfect`, finalización del 100 %, penalización igual a 1 y ausencia total de infracciones. En este conjunto, ambos criterios proporcionan 19 rutas exitosas.
 
 ## Reproducción del posprocesamiento
 
