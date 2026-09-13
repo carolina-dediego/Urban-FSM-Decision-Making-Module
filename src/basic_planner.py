@@ -6,20 +6,17 @@ class BasicPlannerConfig:   # Agrupación de parámetros
         self.grid_w = 200
         self.corridor_width_px = 22   #ancho donde buscar obstáculos
         self.lookahead_px = 90    #90 ve 45m por delante
-        self.pixels_per_meter = 2.0   # 2 px/m
+        self.pixels_per_meter = 2.0 
 
         # dinámica
         self.dt_s = 0.05 # tiempo entre decisiones 0.05s (20Hz)
-        self.accel_limit_mps2 = 4.0#acceleración máxima permitida
+        self.accel_limit_mps2 = 4.0 #acceleración máxima permitida
         self.decel_limit_mps2 =4.0
 
         # frenada de emergencia para actor tipo pedestrian muy cercano en carril propio
         self.emergency_ped_distance_m = 3.0
         self.emergency_decel_mps2 = 14.0
         self.emergency_direct_stop_m = 2.2
-
-        # suavizado
-        self.ema_alpha = 0.2
         
         # follow
         self.time_gap_follow = 1.5 # tiempo de separación follow en segundos (dist=min+Tgap*v)
@@ -72,8 +69,6 @@ class BasicPlannerConfig:   # Agrupación de parámetros
         self.lc_cooldown_s = 2.0
         self.lc_slow_v_mps = 2.0        # tráfico lento si el lead va por debajo de esto (m/s)
         self.lc_slow_ratio = 0.55       # o si lead < 55% de v_max_used
-        
-        self.lc_follow_ticks = 40
 
         self.lc_max_overtake_lead_v_mps = 6.0      # si el lead va más rápido que esto, no adelantar
         self.lc_min_speed_advantage_mps = 4      # margen mínimo entre mi v_max_used y la del lead para que compense adelantar
@@ -84,7 +79,7 @@ class BasicPlannerConfig:   # Agrupación de parámetros
         self.lc_normal_min_speed_ratio = 0.70
         self.lc_normal_keep_speed_ratio = 0.95
 
-        self.lc_slow_ticks = 40 #trafico lento durante 1 segundo
+        self.lc_slow_ticks = 40 #trafico lento durante 2 segundos
 
         # adelantamiento inmediato solo si el obstáculo delantero está prácticamente parado
         self.lc_static_lead_v_mps = 0.8
@@ -95,7 +90,6 @@ class BasicPlannerConfig:   # Agrupación de parámetros
 
         # salida algo más decidida justo después de liberar tráfico cruzado
         self.cross_clear_boost_s = 3.0
-        self.cross_clear_start_v_mps = 4.0
         self.cross_clear_accel_mps2 = 7.0
 
         # nuevos parámetros para STOP e intersecciones
@@ -154,8 +148,7 @@ class BasicEnvironmentObserver: # Devuelve distancias
         return None
 
     def _distance_in_front_wide_lane_m(self, bev_segmentation_cls, bev_lane_info, object_types, lane_types):
-        """
-        Busca delante, pero sin limitarse al corredor central.
+        """Busca delante, pero sin limitarse al corredor central.
         Se usa solo para peatones en curvas/intersecciones, donde la trayectoria
         gira y el peatón puede estar en CURRENT_FRONT_LANE pero fuera del corredor recto.
         """
@@ -261,8 +254,6 @@ class BasicEnvironmentObserver: # Devuelve distancias
         ego_corridor_half = max(2, cfg.corridor_width_px // 2)
         lateral_mask = np.abs(cols_abs - col_center) > ego_corridor_half
 
-        # Incluimos coches y actores vulnerables para cubrir CrossingBicycleFlow,
-        # pedestrian crossing dentro del cruce, motos/bicis etiquetadas como pedestrian, etc.
         conflict_object_types = [self.CAR_SEGMENT]
         conflict_lane_types = [
             self.INTERSECTING_LANE,
@@ -358,25 +349,25 @@ class BasicEnvironmentObserver: # Devuelve distancias
         d_left_front = self._distance_in_front_m(
             bev_segmentation_cls, bev_lane_info,
             object_types=lane_change_obstacles,
-            lane_types=left_lane_types  ##si, los nombres están al revés, tengo q cambiarlo
+            lane_types=left_lane_types
         )
 
         d_right_front = self._distance_in_front_m(
             bev_segmentation_cls, bev_lane_info,
             object_types=lane_change_obstacles,
-            lane_types=[self.RIGHT_FRONT_LANE]  ##si, los nombres están al revés, tengo q cambiarlo
+            lane_types=[self.RIGHT_FRONT_LANE] 
         )
 
         d_left_rear = self._distance_behind_m(
             bev_segmentation_cls, bev_lane_info,
             object_types=lane_change_obstacles,
-            lane_types=left_lane_types ##si, los nombres están al revés, tengo q cambiarlo
+            lane_types=left_lane_types
         )
 
         d_right_rear = self._distance_behind_m(
             bev_segmentation_cls, bev_lane_info,
             object_types=lane_change_obstacles,
-            lane_types=[self.RIGHT_FRONT_LANE]  ##si, los nombres están al revés, tengo q cambiarlo
+            lane_types=[self.RIGHT_FRONT_LANE]
         )
 
         d_traffic_light = self._traffic_light_distance_m(traffic_light_info, distance_to_junction)
@@ -481,7 +472,6 @@ class  BasicPlanner:
         
         self.current_state = self.STATE_CRUISE
         self.decision_speed = 0.0
-        ##self.state = {"v_target_mps": 0.0, "last_observations": None}
 
         self.v_curve_mem = 999.0 #empieza asumiendo que es una recta
 
@@ -501,17 +491,13 @@ class  BasicPlanner:
         #follow
         self.prev_lead_d = None     # distancia anterior al coche delante 
         self.prev_lead_kind = None
-        self.v_lead_est = 0.85   ###0.0      # estimación de velocidad del coche delante (m/s) 
+        self.v_lead_est = 0.85        # estimación de velocidad del coche delante (m/s) 
         self.v_lead_alpha = 0.6        # suavizado (0.6–0.85) 
-
-        self.yaw_rate_f = 0.0
         
         # lane change decision
         self.lane_cmd = 0  # -1 left, 0 keep, +1 right
         self.lc_cooldown_t = 0.0
         self.lead_slow_counter = 0
-
-        self.maneuver_time_counter = 0.0
 
         self.follow_ticks_counter = 0
         self.stopped_frustration_timer = 0.0 # Cronómetro para invadir sentido contrario
@@ -707,7 +693,7 @@ class  BasicPlanner:
                 continue # Si falla al leer un punto, saltamos
             
             # Distancias
-            a = np.hypot(p2_x-p1_x, p2_y-p1_y) ###Creo que dividiendo entre 2 calcula mejor si hay curva
+            a = np.hypot(p2_x-p1_x, p2_y-p1_y)
             b = np.hypot(p3_x-p2_x, p3_y-p2_y)
             c = np.hypot(p3_x-p1_x, p3_y-p1_y)
             
@@ -737,8 +723,7 @@ class  BasicPlanner:
         return max(v_lim, self.cfg.curve_min_v_mps)
     
     def _get_turn_direction_at_junction(self, localPath, distance_to_junction):
-        """
-        Devuelve:
+        """Devuelve:
         - left si estamos cerca de una intersección y la ruta gira a la izquierda.
         - right si gira a la derecha.
         - straight si no hay giro claro o no estamos cerca.
@@ -776,9 +761,6 @@ class  BasicPlanner:
     def _choose_state(self, d_ahead, v_now, is_static_obstacle, obstacle_kind=None, v_curve_limit=999.0):
         cfg = self.cfg
 
-        if d_ahead is None:
-            return self.STATE_CRUISE
-        
         if d_ahead is None:
             return self.STATE_CRUISE
 
@@ -848,7 +830,7 @@ class  BasicPlanner:
             dist_total_libre = max(d_ahead - dist_stop, 0.0)
             if dist_total_libre < 1.0 and v_now < 1.5:
                 return 0.0
-            dist_reaccion = v_now * 0.0  #*0.5 # 0.5 segundos de margen ###borrar si al final la dejo en 0
+            dist_reaccion = v_now * 0.0  #*0.5
             dist_efectiva = max(dist_total_libre - dist_reaccion, 0.0)
             # v max q te permite parar
             v_brake_physics = np.sqrt(2.0 * self.cfg.decel_limit_mps2 * dist_efectiva)  #v^2 = vo^2 + 2*a*d
@@ -857,16 +839,15 @@ class  BasicPlanner:
 
             return v_ret
 
-        elif state == self.STATE_FOLLOW: ########
+        elif state == self.STATE_FOLLOW:
             v_lead = max(self.v_lead_est, 0.0) 
             desired_gap = self.cfg.min_distance_follow + self.cfg.time_gap_follow * max(v_now,0.0)
 
             e = d_ahead - desired_gap #error distancia (>0 vas lejos, <0 vas cerca)
 
             # Control: iguala v_lead y corrige distancia poco a poco
-            #si funciona raro, cambiar entre sí los parámetros de far y close
-            k_p_far = 0.85  # (m/s) por metro. Más bajo = decelera poco
-            k_p_close = 0.4    # la idea es, si estás cerca corriges más fuerte, si estás lejos recuperas distancia más suave
+            k_p_far = 0.85
+            k_p_close = 0.4
             k_p = k_p_close if e < 0 else k_p_far
             
             v_cmd = v_lead + k_p * e 
@@ -890,7 +871,7 @@ class  BasicPlanner:
 
         self.lane_change_urgent = False
 
-        # Bloquea SOLO el inicio de nuevos cambios de carril en curva.
+        # Bloquea el inicio de nuevos cambios de carril en curva.
         # Si ya hay un cambio activo, no lo cancela.
         if block_new_lc and self.lane_cmd == 0:
             return 0
@@ -911,7 +892,7 @@ class  BasicPlanner:
 
         #solo permitir adelantamiento en una ventana razonable (ni lejos ni cerca)
         # Coche delantero prácticamente parado.
-        # Se calcula ANTES de descartar por distancia, porque si no a 1 m ya no permite iniciar.
+        # Se calcula antes de descartar por distancia, porque si no a 1 m ya no permite iniciar.
         almost_static_lead = (
             obstacle_kind in ("VEHICLE", "FRONT_OBSTACLE") and
             d_ahead is not None and
@@ -968,7 +949,7 @@ class  BasicPlanner:
 
         # Extraemos distancias de los sensores
         lf = obs.get("d_left_front_m")
-        rf = obs.get("d_right_front_m") # <--- Añadimos el derecho también
+        rf = obs.get("d_right_front_m")
         lr = obs.get("d_left_rear_m")
         rr = obs.get("d_right_rear_m")
         
@@ -1012,20 +993,12 @@ class  BasicPlanner:
             left_ok = True
             if lf is not None and lf < front_need: left_ok = False
             if lr is not None and lr < (rear_need * 0.7): left_ok = False
-            
-        
+                    
         if left_ok: return -1
         return 0
-        
-        '''#si ambos seguros elegimos el que tiene más espacio delante
-        #if left_ok:  return -1
-        #if right_ok: return +1
-        return 0'''
-
-
 
     def step(self, bev_segmentation_cls, bev_lane_info, traffic_light_info, distance_to_junction, actual_velocity, 
-             localPath=None, v_max=None, yaw_rate=None, location=None,
+             localPath=None, v_max=None, location=None,
              traffic_signs_stop=None, closest_stop_sign=None, obstacle_in_front=None):
 
         dt = float(self.cfg.dt_s)
@@ -1048,14 +1021,6 @@ class  BasicPlanner:
             recovery_rate = 2.0 * self.cfg.dt_s 
             self.v_curve_mem = min(v_curve_instant, self.v_curve_mem + recovery_rate)
         v_curve_limit = self.v_curve_mem
-
-        if yaw_rate is not None:
-            yr = float(yaw_rate)
-            a = float(self.cfg.curve_filter_alpha)
-            self.yaw_rate_f = a*self.yaw_rate_f + (1.0-a) * yr
-            yr_abs = abs(self.yaw_rate_f)
-            if yr_abs > 0.15:
-                v_curve_limit = np.clip(self.cfg.a_lat_max_mps2/yr_abs, self.cfg.curve_min_v_mps,v_max_used)
 
         turn_direction = self._get_turn_direction_at_junction(localPath, distance_to_junction)
         turning_at_junction = turn_direction in ("left", "right")
@@ -1523,7 +1488,6 @@ class  BasicPlanner:
         #Calcular v_target
         v_target = self._get_target_speed(self.current_state, v_now, v_max_used, d_ahead, is_static_obstacle=is_static_obstacle, obstacle_kind=obstacle_kind, v_curve_limit=v_curve_limit)
         
-        ##
         # Cambio de carril normal:
         # evita que el coche se quede demasiado atrás durante el adelantamiento.
         # Solo se aplica en FOLLOW, nunca en BRAKING ni STOPPED.
@@ -1553,7 +1517,7 @@ class  BasicPlanner:
                 )
 
                 v_target = max(v_target, v_lc_floor)
-        ##
+        
         if maneuver_escape_active:
             v_target = max(v_target, 2.2)
 
@@ -1562,8 +1526,6 @@ class  BasicPlanner:
         frustrated_escape_active = (self.frustrated_escape_timer_s > 0.0 and self.lane_cmd != 0)
         if frustrated_escape_active:
             v_target = min(v_target, self.frustrated_escape_v_mps)
-
-        #v_curve_limit = 999.0   #prueba, borrar al final
 
         cross_escape_active = self.cross_clear_boost_timer_s > 0.0
 
@@ -1604,10 +1566,8 @@ class  BasicPlanner:
         # print(f"St: {self.current_state} | Dist: {dist_str:6} | {aviso_lc:25} | Carril  | {crv_str} | V_crv: {v_curve_limit:.1f} | V_ema: {v_out:.2f} | V_target: {v_target:.2f} | V_now: {v_now:.2f}")
         
         self.decision_speed = v_out    #descomentar si quiero usar filtro ema
-        #self.decision_speed = v_target #comprobación sin filtro ema
 
-        return float(self.decision_speed), str(lane_option), bool(self.lane_change_urgent)#, location
-        #return self.decision_speed
+        return float(self.decision_speed), str(lane_option), bool(self.lane_change_urgent)
     
     def _apply_dynamics_and_ema(self, v_now, v_target, v_max_used, state):
         dt = float(self.cfg.dt_s)
