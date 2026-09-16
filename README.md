@@ -267,15 +267,6 @@ La representación BEV utilizada por la arquitectura asigna la misma categoría 
 
 La distinción explícita entre peatones y bicicletas requeriría información semántica adicional procedente del sistema de percepción.
 
-## Limitaciones y posibles mejoras
-
-Entre las posibles ampliaciones del módulo se encuentran:
-
-- Incorporar información semántica que permita distinguir explícitamente entre peatones y bicicletas.
-- Añadir un bloqueo independiente de las maniobras laterales cuando exista una regulación activa por semáforo o señal de STOP.
-- Adaptar las interfaces de entrada y salida para facilitar la integración en otras arquitecturas.
-- Ampliar la evaluación con nuevos escenarios y condiciones de tráfico.
-
 ## Contexto académico
 
 Este repositorio forma parte de un Trabajo Fin de Grado del Grado en Ingeniería en Electrónica y Automática Industrial de la Universidad de Alcalá.
