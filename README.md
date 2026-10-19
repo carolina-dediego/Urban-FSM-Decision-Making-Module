@@ -267,8 +267,6 @@ La representación BEV utilizada por la arquitectura asigna la misma categoría 
 
 La distinción explícita entre peatones y bicicletas requeriría información semántica adicional procedente del sistema de percepción.
 
-## Contexto académico
+## Contexto
 
-Este repositorio forma parte de un Trabajo Fin de Grado del Grado en Ingeniería en Electrónica y Automática Industrial de la Universidad de Alcalá.
-
-El trabajo se desarrolla en colaboración con el grupo de investigación RobeSafe y utiliza CARLA y Bench2Drive como entorno de simulación y evaluación.
+El trabajo se desarrolla dentro del grupo de investigación RobeSafe y utiliza CARLA y Bench2Drive como entorno de simulación y evaluación.
