@@ -151,6 +151,7 @@ En cada ciclo de decisión se realizan las siguientes operaciones:
 ```text
 Urban-FSM-Decision-Making-Module/
 ├── README.md
+├── 2026_ROBOT___Finite_State_Decision_Making_Module_for_Modular_Autonomous_Navigation_in_Urban_Scenarios.pdf
 ├── src/
 │   ├── README.md
 │   ├── basic_planner.py
@@ -273,7 +274,7 @@ El trabajo se desarrolla dentro del grupo de investigación RobeSafe y utiliza C
 
 ## Artículo científico
 
-[A Finite-State Decision-Making Framework for Autonomous Navigation in Urban Scenarios](2026_ROBOT___Finite_State_Decision_Making_Module_for_Modular_Autonomous_Navigation_in_Urban_Scenarios)
+[A Finite-State Decision-Making Framework for Autonomous Navigation in Urban Scenarios](2026_ROBOT___Finite_State_Decision_Making_Module_for_Modular_Autonomous_Navigation_in_Urban_Scenarios.pdf)
 
 Primera autora: Carolina de Diego-García.
 Aceptado para publicación en ROBOT 2026.
