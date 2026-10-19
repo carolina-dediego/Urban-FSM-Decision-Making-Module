@@ -270,3 +270,10 @@ La distinción explícita entre peatones y bicicletas requeriría información s
 ## Contexto
 
 El trabajo se desarrolla dentro del grupo de investigación RobeSafe y utiliza CARLA y Bench2Drive como entorno de simulación y evaluación.
+
+## Artículo científico
+
+[A Finite-State Decision-Making Framework for Autonomous Navigation in Urban Scenarios](2026_ROBOT___Finite_State_Decision_Making_Module_for_Modular_Autonomous_Navigation_in_Urban_Scenarios)
+
+Primera autora: Carolina de Diego-García.
+Aceptado para publicación en ROBOT 2026.
